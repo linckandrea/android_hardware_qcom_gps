@@ -41,20 +41,10 @@ LOCAL_CFLAGS += \
      -Wno-unused-parameter \
      -Wno-error \
 
-LOCAL_C_INCLUDES:= \
-    $(TARGET_OUT_HEADERS)/gps.utils \
-    $(TARGET_OUT_HEADERS)/libloc_core
-
-LOCAL_COPY_HEADERS_TO:= libloc_eng/
-LOCAL_COPY_HEADERS:= \
-   LocEngAdapter.h \
-   loc.h \
-   loc_eng.h \
-   loc_eng_xtra.h \
-   loc_eng_ni.h \
-   loc_eng_agps.h \
-   loc_eng_msg.h \
-   loc_eng_log.h
+LOCAL_HEADER_LIBRARIES := \
+    libgps.utils_headers \
+    libloc_core_headers \
+    liblocation_api_headers
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -93,10 +83,10 @@ ifeq ($(TARGET_USES_QCOM_BSP), true)
 LOCAL_CFLAGS += -DTARGET_USES_QCOM_BSP
 endif
 
-## Includes
-LOCAL_C_INCLUDES:= \
-    $(TARGET_OUT_HEADERS)/gps.utils \
-    $(TARGET_OUT_HEADERS)/libloc_core
+LOCAL_HEADER_LIBRARIES := \
+    libgps.utils_headers \
+    libloc_core_headers \
+    liblocation_api_headers
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 
